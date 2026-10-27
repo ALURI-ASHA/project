@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Profile{% endblock %}
+{% block content %}
+<div class="auth-card">
+  <p class="eyebrow">ACCOUNT SETTINGS</p>
+  <h1>Your profile</h1>
+  <form method="post">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    <label>Name</label>
+    <input name="name" maxlength="80" value="{{ user.name }}" required>
+    <label>Email</label>
+    <input value="{{ user.email }}" disabled>
+    <button class="btn primary full" type="submit">Save changes</button>
+  </form>
+</div>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}SecureAuth — Home{% endblock %}
+{% block content %}
+<section class="hero">
+  <div>
+    <p class="eyebrow">SECURE WEB APPLICATION</p>
+    <h1>Authentication built with security in mind.</h1>
+    <p class="lead">A simple web application demonstrating secure signup, login, sessions, validation and protection against common web vulnerabilities.</p>
+    <div class="actions">
+      {% if current_user %}
+        <a class="btn primary" href="{{ url_for('dashboard') }}">Open Dashboard</a>
+      {% else %}
+        <a class="btn primary" href="{{ url_for('signup') }}">Get Started</a>
+        <a class="btn secondary" href="{{ url_for('login') }}">Login</a>
+      {% endif %}
+    </div>
+  </div>
+  <div class="shield">🛡️</div>
+</section>
+
+<section class="grid">
+  <article class="card"><h3>🔐 Password Security</h3><p>Passwords are protected with bcrypt hashing rather than plain-text storage.</p></article>
+  <article class="card"><h3>🧱 SQL Injection</h3><p>Database access uses SQLAlchemy ORM queries instead of unsafe string-built SQL.</p></article>
+  <article class="card"><h3>🛡️ XSS & CSRF</h3><p>Template escaping, a Content Security Policy and CSRF tokens protect application forms.</p></article>
+  <article class="card"><h3>⏱️ Sessions</h3><p>Authenticated sessions use HttpOnly/SameSite cookies and an automatic timeout.</p></article>
+</section>
+{% endblock %}

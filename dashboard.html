@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+<section class="page-head">
+  <div>
+    <p class="eyebrow">PROTECTED AREA</p>
+    <h1>Hello, {{ user.name }} 👋</h1>
+    <p class="muted">You are authenticated and viewing a protected page.</p>
+  </div>
+  <a class="btn secondary" href="{{ url_for('profile') }}">Edit profile</a>
+</section>
+
+<section class="dashboard-grid">
+  <article class="card large">
+    <h2>Security status</h2>
+    <div class="status"><span>✓</span> Password hashed with bcrypt</div>
+    <div class="status"><span>✓</span> CSRF protection enabled</div>
+    <div class="status"><span>✓</span> SQLAlchemy ORM queries</div>
+    <div class="status"><span>✓</span> XSS-safe Jinja templates</div>
+    <div class="status"><span>✓</span> Secure session configuration</div>
+  </article>
+  <article class="card">
+    <h2>Account</h2>
+    <p><strong>Name</strong><br>{{ user.name }}</p>
+    <p><strong>Email</strong><br>{{ user.email }}</p>
+    <p><strong>Joined</strong><br>{{ user.created_at.strftime('%d %b %Y') if user.created_at else 'Today' }}</p>
+  </article>
+</section>
+{% endblock %}

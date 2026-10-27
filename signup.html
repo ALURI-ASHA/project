@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Create Account{% endblock %}
+{% block content %}
+<div class="auth-card">
+  <p class="eyebrow">SECURE REGISTRATION</p>
+  <h1>Create your account</h1>
+  <p class="muted">Your password is stored only as a secure bcrypt hash.</p>
+  <form method="post" novalidate>
+    {{ form.csrf_token if form is defined else "" }}
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    <label>Name</label>
+    <input name="name" maxlength="80" required autocomplete="name">
+    <label>Email</label>
+    <input name="email" type="email" maxlength="120" required autocomplete="email">
+    <label>Password</label>
+    <input name="password" type="password" minlength="8" required autocomplete="new-password">
+    <small>Minimum 8 characters.</small>
+    <label>Confirm password</label>
+    <input name="confirm_password" type="password" minlength="8" required autocomplete="new-password">
+    <button class="btn primary full" type="submit">Create account</button>
+  </form>
+  <p class="center muted">Already registered? <a href="{{ url_for('login') }}">Login</a></p>
+</div>
+{% endblock %}
